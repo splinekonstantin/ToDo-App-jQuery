@@ -1,7 +1,31 @@
 // Check Off Specific Todos By Clicking
-$("ul").on("click", "li", function(){
-	$(this).toggleClass("completed");
+$("#todo").on("click", "li", function(){
+	// $(this).toggleClass("completed");
+	// store value of clicked todo
+	var don = $(this).text();
+	// move clicked todo to #done list
+	$("#done").append("<li class = 'completed'><span><i class='far fa-trash-alt'></i></span> " + don + "</li>");
+	// remove clicked todo from #todo list
+	$(this).fadeOut(500, function(){
+		$(this).remove();
+	});
+	event.stopPropagation();
 });
+
+// Check On Specific Todos By Clicking
+$("#done").on("click", "li", function(){
+	// $(this).toggleClass("completed");
+	// store value of clicked todo
+	var don = $(this).text();
+	// move clicked todo to #done list
+	$("#todo").append("<li><span><i class='far fa-trash-alt'></i></span> " + don + "</li>");
+	// remove clicked todo from #todo list
+	$(this).fadeOut(500, function(){
+		$(this).remove();
+	});
+	event.stopPropagation();
+});
+
 // Click On X To Delite Todo
 $("ul").on("click", "span", function(event){
 	$(this).parent().fadeOut(500, function(){
@@ -16,7 +40,7 @@ $("input[type = 'text']").keypress(function(event){
 		var todoText = $(this).val();
 		$(this).val("");
 		// create a new li and add to ul
-		$("ul").append("<li><span><i class='far fa-trash-alt'></i></span> " + todoText + "</li>")
+		$("#todo").append("<li><span><i class='far fa-trash-alt'></i></span> " + todoText + "</li>")
 	}
 })
 
