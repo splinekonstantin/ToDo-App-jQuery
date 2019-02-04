@@ -42,8 +42,17 @@ $("input[type = 'text']").keypress(function(event){
 		// create a new li and add to ul
 		$("#todo").append("<li><span><i class='far fa-trash-alt'></i></span> " + todoText + "</li>")
 	}
-})
+});
 
 $(".fa-plus").click(function(){
-	$("input[type = 'text']").fadeToggle();
+		// grabbing new todo text from input
+		var todoText = $("input[type = 'text']").val();
+		$("input[type = 'text']").val("");
+		// create a new li and add to ul
+		$("#todo").append("<li><span><i class='far fa-trash-alt'></i></span> " + todoText + "</li>")
+});
+
+$(".fa-edit").click(function(){
+	$(".form").fadeToggle();
+	$("input[type='text']").fadeToggle()
 });
